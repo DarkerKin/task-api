@@ -82,6 +82,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Task'
+<<<<<<< HEAD
         '400':
           description: ID is not a number
           content:
@@ -107,6 +108,8 @@ paths:
                   error:
                     type: string
                     example: Task not found
+=======
+>>>>>>> 6ba7fbef28d97ed2959864561991bb708cabdc42
 components:
   schemas:
     Task:
