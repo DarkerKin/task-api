@@ -59,6 +59,54 @@ paths:
                 $ref: '#/components/schemas/Task'
         '400':
           $ref: '#/components/responses/BadRequest'
+  /tasks/{id}:
+    get:
+      summary: Get task by ID
+      tags:
+        - Tasks
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+            minimum: 1
+            example: 1
+          required: true
+          description: Numeric ID of the user to get
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Task'
+        '400':
+          description: ID is not a number
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Validation Failed
+                  details:
+                    type: array
+                    items: string
+                    example:
+                      - ID must be a number
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Task not found
 components:
   schemas:
     Task:
